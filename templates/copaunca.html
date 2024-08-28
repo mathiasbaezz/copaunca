@@ -1,0 +1,169 @@
+{% include "headercpunca.html" %}
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultados</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/cupingcss/stylecup.css' %}">
+     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+
+    <style>
+        /* Estilos para agregar espacio entre partidos */
+        .partido-container {
+            margin-bottom: 20px;
+        }
+
+        /* Estilos para resaltar los partidos */
+        .partido {
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .partido:hover {
+            background-color: #e5e5e5;
+        }
+
+        .hidden {
+          display: none;
+        }
+    </style>
+</head>
+<body>
+
+   	<!-- Breadcrumb section -->
+	<div class="site-breadcrumb">
+		<div class="container">
+
+		</div>
+	</div>
+	<!-- Breadcrumb section end -->
+    <div class="container">
+    <ol class="breadcrumb" style="background-color: transparent;">
+      <!--<li class="breadcrumb-item" ><a href="/" style="color: black"><i class="fa fa-home" style="color: black"></i> Inicio</a> </li>
+      <li class="breadcrumb-item active">Deportes</li>-->
+    </ol>
+    </div>
+
+	<!-- Breadcrumb section end -->
+    
+    <div class="section-title text-center">
+    <h2 id="welcome-text-1" style="color: #009813;"> Bienvenido a la </h2>
+</div>
+
+<img id="welcome-image" style="display: block; margin: 0 auto; max-width: 350px; height: auto; opacity: 0;" src="{% static 'image/cpunca24.png' %}"><br><br>
+
+<div class="section-title text-center">
+    <h2 id="welcome-text-2" style="color: #009813;"> 8va Edición!</h2>
+</div>
+    <br><br>
+                <button lang="es" type="button" class="btn btn-secondary btn-lg" style="display: block; background: #009813; border-radius: 20px; margin-right: auto; margin-left: auto"><i class="fa fa-file-pdf-o"></i>
+                    <a lang="es" href="#" style="color: white; "> Reglamento Copa Unca 2024</a>
+                </button><br><br><br>
+
+
+    
+	<!-- Team section  -->
+<section class="full-courses-section spad pt-0">
+    <div class="container">
+        <div class="section-title text-center">
+            <!--<h3 style="text-decoration: none">Modalidades</h3>-->
+            <h4 data-aos="fade-up">Todas las modalidades de la competencia</h4>
+        </div>
+        <div class="row">
+            {% for deporteunca in deportes %}
+            <div class="col-md-6 col-lg-3">
+                <a href="{{ deporteunca.link }}">
+                    <div class="member">
+                        <div class="member-pic set-bg" data-setbg="{% static 'image/' %}{{ deporteunca.foto }}">
+                            
+                        </div>
+                        <!--<h5 style="padding-bottom: 20px;">{{ deporteunca.nombre }}</h5>-->
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+    
+	<!-- Team section end -->
+    <!-- Blog section -->
+	<section class="blog-section spad">
+		<div class="container">
+			<div class="section-title text-center">
+                <h4><i class="fa fa-newspaper-o"></i> FEUNCA Noticias</h4>
+				
+			</div>
+			<div class="row">
+                {% for post in posts %}
+				<div class="col-xl-6 col-md-6 col-sm-12">
+					<div class="blog-item" id="blogItem">
+						<div class="blog-thumb set-bg" data-setbg="{% static "image/" %}{{ post.foto }}"></div>
+						<div class="blog-content">
+                            <h4><a href="/noticias/{{ post.id }}" style="color:black">{{ post.title }}</a></h4>
+							<div class="blog-meta">
+								<span><i class="fa fa-calendar-o"></i> {{ post.published_date }} </span>
+								<span><i class="fa fa-user"></i> {{ post.author }} </span>
+							</div>
+							<p>{{ post.text|truncatewords:"25" }}</p>
+						</div>
+					</div>
+				</div>
+                {% endfor %}
+			</div>
+		</div>
+	</section>
+	<!-- Blog section -->
+
+    {% include "pie_pagina.html" %}
+    <script src="{% static 'js/cupingjs/script.js' %}"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const textElement1 = document.getElementById('welcome-text-1');
+            const textElement2 = document.getElementById('welcome-text-2');
+            const text1 = textElement1.innerHTML;
+            const text2 = textElement2.innerHTML;
+            const imageElement = document.getElementById('welcome-image');
+            
+            textElement1.innerHTML = ''; // Limpiar el texto original
+            textElement2.innerHTML = ''; // Limpiar el texto original
+        
+            let index1 = 0;
+            let index2 = 0;
+        
+            function typeWriter1() {
+                if (index1 < text1.length) {
+                    textElement1.innerHTML += text1.charAt(index1);
+                    index1++;
+                    setTimeout(typeWriter1, 100); // Ajustar la velocidad aquí
+                } else {
+                    textElement1.style.borderRight = 'none'; // Eliminar el cursor después de que termine el tipeo
+                    fadeInImage();
+                }
+            }
+        
+            function fadeInImage() {
+                imageElement.style.opacity = 1; // Mostrar la imagen con desvanecimiento
+                setTimeout(typeWriter2, 500); // Iniciar la animación del segundo texto después de la imagen
+            }
+        
+            function typeWriter2() {
+                if (index2 < text2.length) {
+                    textElement2.innerHTML += text2.charAt(index2);
+                    index2++;
+                    setTimeout(typeWriter2, 100); // Ajustar la velocidad aquí
+                } else {
+                    textElement2.style.borderRight = 'none'; // Eliminar el cursor después de que termine el tipeo
+                }
+            }
+        
+            typeWriter1(); // Iniciar la animación del primer texto
+        });
+
+
+    </script>
+</body>
+</html>

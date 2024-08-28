@@ -1,0 +1,163 @@
+{% include "headercpunca.html" %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tabla de Posiciones</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/cupingcss/stylecup.css' %}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+
+     <!-- Breadcrumb section -->
+	<div class="site-breadcrumb">
+
+	</div>
+	<!-- Breadcrumb section end -->
+    <div class="container">
+    <ol class="breadcrumb" style="background-color: transparent;">
+      <!--<li class="breadcrumb-item" ><a href="/" style="color: black"><i class="fa fa-home" style="color: black"></i> Inicio</a> </li>
+      <li class="breadcrumb-item active">Tabla de Posiciones</li>-->
+    </ol>
+    </div>
+
+
+    <section class="full-courses-section spad pt-0">
+    <div class="container">
+    <h4 class="h3-stylecup">Tabla de Posiciones Campeonato General</h4>
+        <img style="display: block; margin: 0 auto; max-width: 250px; height: auto;"   src="{% static 'image/cpunca6.png' %}"><br><br>
+
+
+<table id="tabla-posiciones" >
+    <thead>
+        <tr>
+            <th class="columnaabsolute">&nbsp;&nbsp;&nbsp;EQUIPO</th>
+            <th>FÚT<br>BOL FEM</th>
+            <th>FÚT<br>BOL MASC</th>
+            <th>FÚT<br>SAL FEM</th>
+            <th>FÚT<br>SAL MASC</th>
+            <th>HAND<br>BALL FEM</th>
+            <th>HAND<br>BALL MASC</th>
+            <th>VO<br>LLEY FEM</th>
+            <th>VO<br>LLEY MASC</th>
+            <th>BAS<br>QUET FEM</th>
+            <th>BAS<br>QUET MASC</th>
+            <th>FÚT<br>BOL<br> UNIV</th>
+            <th>PI<br>KI</th>
+            <th>AJE<br>DREZ</th>
+            <th>PING<br>PONG</th>
+            <th>CI<br>CLIS<br>MO<br>FEM</th>
+            <th>CI<br>CLIS<br>MO<br>MASC</th>
+            <th>A<br>TLE<br>TIS<br>MO</th>
+            <th>PUNTOS</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for posicionunca in posiciones %}
+            <tr>
+                <td class="columnaabsolute">
+                    <img src="{% static "image/" %}{{ posicionunca.equipo.imagen }}" alt="" class="equipo-img" style="display: inline">
+                    {{ posicionunca.equipo.nombre }}
+                </td>
+                <td>{{ posicionunca.puntos_futbol_fem }}</td>
+                <td>{{ posicionunca.puntos_futbol_masc }}</td>
+                <td>{{ posicionunca.puntos_futsal_fem }}</td>
+                <td>{{ posicionunca.puntos_futsal_masc }}</td>
+                <td>{{ posicionunca.puntos_handball_fem }}</td>
+                <td>{{ posicionunca.puntos_handball_masc }}</td>
+                <td>{{ posicionunca.puntos_volley_fem }}</td>
+                <td>{{ posicionunca.puntos_volley_masc }}</td>
+                <td>{{ posicionunca.puntos_basket_fem }}</td>
+                <td>{{ posicionunca.puntos_basket_masc }}</td>
+                <td>{{ posicionunca.puntos_futbol_universitario }}</td>
+                <td>{{ posicionunca.puntos_piki }}</td>
+                <td>{{ posicionunca.puntos_ajedrez }}</td>
+                <td>{{ posicionunca.puntos_pingpong }}</td>
+                <td>{{ posicionunca.puntos_ciclismofem }}</td>
+                <td>{{ posicionunca.puntos_ciclismomasc }}</td>
+                <td>{{ posicionunca.puntos_atletismo }}</td>
+                <td>{{ posicionunca.puntos }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table><br><br>
+    <h4 >Puntaje por modalidad</h4>
+        <img style=" max-width: 250px; "   src="{% static 'image/cpunca6.png' %}"><br><br>
+    <ul style="list-style-type: none;">
+        <li ><i class="fa fa-futbol-o"></i> Fútbol de Campo<br> <i class="fa fa-mars"></i> Masculino <i class="fa fa-venus"></i> Femenino<br> <i class="fa fa-trophy"></i> Campeón: 10pts<br> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-2-circle-fill" viewBox="0 0 16 16">
+  <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M6.646 6.24c0-.691.493-1.306 1.336-1.306.756 0 1.313.492 1.313 1.236 0 .697-.469 1.23-.902 1.705l-2.971 3.293V12h5.344v-1.107H7.268v-.077l1.974-2.22.096-.107c.688-.763 1.287-1.428 1.287-2.43 0-1.266-1.031-2.215-2.613-2.215-1.758 0-2.637 1.19-2.637 2.402v.065h1.271v-.07Z"/>
+</svg> Vicecampeón: 5pts</li><br>
+    <li ><i class="fa fa-futbol-o"></i> Fútbol de Salón<br> <i class="fa fa-mars"></i> Masculino <i class="fa fa-venus"></i> Femenino<br> <i class="fa fa-trophy"></i> Campeón: 10pts<br> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-2-circle-fill" viewBox="0 0 16 16">
+  <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M6.646 6.24c0-.691.493-1.306 1.336-1.306.756 0 1.313.492 1.313 1.236 0 .697-.469 1.23-.902 1.705l-2.971 3.293V12h5.344v-1.107H7.268v-.077l1.974-2.22.096-.107c.688-.763 1.287-1.428 1.287-2.43 0-1.266-1.031-2.215-2.613-2.215-1.758 0-2.637 1.19-2.637 2.402v.065h1.271v-.07Z"/>
+</svg> Vicecampeón: 5pts</li><br> </li>
+        <li ><i class="fa fa-angle-double-down"></i> Handball<br> <i class="fa fa-mars"></i> Masculino <i class="fa fa-venus"></i> Femenino<br> <i class="fa fa-trophy"></i> Campeón: 10pts<br> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-2-circle-fill" viewBox="0 0 16 16">
+  <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M6.646 6.24c0-.691.493-1.306 1.336-1.306.756 0 1.313.492 1.313 1.236 0 .697-.469 1.23-.902 1.705l-2.971 3.293V12h5.344v-1.107H7.268v-.077l1.974-2.22.096-.107c.688-.763 1.287-1.428 1.287-2.43 0-1.266-1.031-2.215-2.613-2.215-1.758 0-2.637 1.19-2.637 2.402v.065h1.271v-.07Z"/>
+</svg> Vicecampeón: 5pts</li><br> </li>
+        <li ><i class="fa fa-volleyball"></i> Volley<br> <i class="fa fa-mars"></i> Masculino <i class="fa fa-venus"></i> Femenino<br> <i class="fa fa-trophy"></i> Campeón: 10pts<br> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-2-circle-fill" viewBox="0 0 16 16">
+  <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M6.646 6.24c0-.691.493-1.306 1.336-1.306.756 0 1.313.492 1.313 1.236 0 .697-.469 1.23-.902 1.705l-2.971 3.293V12h5.344v-1.107H7.268v-.077l1.974-2.22.096-.107c.688-.763 1.287-1.428 1.287-2.43 0-1.266-1.031-2.215-2.613-2.215-1.758 0-2.637 1.19-2.637 2.402v.065h1.271v-.07Z"/>
+</svg> Vicecampeón: 5pts</li><br> </li>
+    <li ><i class="fa-solid fa-basketball"></i> Basquet<br> <i class="fa fa-mars"></i> Masculino <i class="fa fa-venus"></i> Femenino<br> <i class="fa fa-trophy"></i> Campeón: 10pts<br> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-2-circle-fill" viewBox="0 0 16 16">
+  <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M6.646 6.24c0-.691.493-1.306 1.336-1.306.756 0 1.313.492 1.313 1.236 0 .697-.469 1.23-.902 1.705l-2.971 3.293V12h5.344v-1.107H7.268v-.077l1.974-2.22.096-.107c.688-.763 1.287-1.428 1.287-2.43 0-1.266-1.031-2.215-2.613-2.215-1.758 0-2.637 1.19-2.637 2.402v.065h1.271v-.07Z"/>
+</svg> Vicecampeón: 5pts</li><br> </li>
+    <li ><i class="fa fa-volleyball"></i> Piki<br> <i class="fa fa-mars"></i> Masculino <br> <i class="fa fa-trophy"></i> Campeón: 10pts<br> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-2-circle-fill" viewBox="0 0 16 16">
+  <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M6.646 6.24c0-.691.493-1.306 1.336-1.306.756 0 1.313.492 1.313 1.236 0 .697-.469 1.23-.902 1.705l-2.971 3.293V12h5.344v-1.107H7.268v-.077l1.974-2.22.096-.107c.688-.763 1.287-1.428 1.287-2.43 0-1.266-1.031-2.215-2.613-2.215-1.758 0-2.637 1.19-2.637 2.402v.065h1.271v-.07Z"/>
+</svg> Vicecampeón: 5pts</li><br> </li>
+            <li ><i class="fa fa-chess"></i> Ajedrez<br> <i class="fa fa-venus-mars"></i> Mixto<br> <i class="fa fa-trophy"></i> Campeón: 10pts<br> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-2-circle-fill" viewBox="0 0 16 16">
+  <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M6.646 6.24c0-.691.493-1.306 1.336-1.306.756 0 1.313.492 1.313 1.236 0 .697-.469 1.23-.902 1.705l-2.971 3.293V12h5.344v-1.107H7.268v-.077l1.974-2.22.096-.107c.688-.763 1.287-1.428 1.287-2.43 0-1.266-1.031-2.215-2.613-2.215-1.758 0-2.637 1.19-2.637 2.402v.065h1.271v-.07Z"/>
+</svg> Vicecampeón: 5pts</li><br> </li>
+    <li style="text-align: left;"><i class="fa fa-table-tennis"></i> Ping Pong <br> <i class="fa fa-venus-mars"></i> Mixto<br> <i class="fa fa-trophy"></i> Campeón: 10pts<br> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-2-circle-fill" viewBox="0 0 16 16">
+  <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M6.646 6.24c0-.691.493-1.306 1.336-1.306.756 0 1.313.492 1.313 1.236 0 .697-.469 1.23-.902 1.705l-2.971 3.293V12h5.344v-1.107H7.268v-.077l1.974-2.22.096-.107c.688-.763 1.287-1.428 1.287-2.43 0-1.266-1.031-2.215-2.613-2.215-1.758 0-2.637 1.19-2.637 2.402v.065h1.271v-.07Z"/>
+</svg> Vicecampeón: 5pts</li><br> </li>
+            <li ><i class="fa-solid fa-biking"></i> Ciclismo<br> <i class="fa fa-mars"></i> Masculino <i class="fa fa-venus"></i> Femenino<br> 
+            &#129351; 1er Puesto: 10pts<br>  &#129352; 2do Puesto: 5pts</li><br>
+            <li ><i class="fa fa-running"></i> Atletismo<br> <i class="fa fa-venus-mars"></i> Mixto<br> 
+                &#129351; 1er Puesto: 10pts<br>  &#129352; 2do Puesto: 7pts<br> &#129353; 3er Puesto: 5pts</li><br> </li>
+        
+
+    <li style="visibility: hidden;">&nbsp;</li>
+</ul>
+
+
+        </div>
+
+
+    </div>
+
+
+
+
+    </section>
+
+<!-- Blog section -->
+	<section class="blog-section spad">
+		<div class="container">
+			<div class="section-title text-center">
+                <h4><i class="fa fa-newspaper-o"></i> FEUNCA Noticias</h4>
+				
+			</div>
+			<div class="row">
+                {% for post in posts %}
+				<div class="col-xl-6 col-md-6 col-sm-12">
+					<div class="blog-item" id="blogItem">
+						<div class="blog-thumb set-bg" data-setbg="{% static "image/" %}{{ post.foto }}"></div>
+						<div class="blog-content">
+                            <h4><a href="/noticias/{{ post.id }}" style="color:black">{{ post.title }}</a></h4>
+							<div class="blog-meta">
+								<span><i class="fa fa-calendar-o"></i> {{ post.published_date }} </span>
+								<span><i class="fa fa-user"></i> {{ post.author }} </span>
+							</div>
+							<p>{{ post.text|truncatewords:"25" }}</p>
+						</div>
+					</div>
+				</div>
+                {% endfor %}
+			</div>
+		</div>
+	</section>
+	<!-- Blog section -->
+{% include "pie_pagina.html" %}
+<script src="{% static "js/cupingjs/script.js" %}"></script>
+
+</body>
+</html>

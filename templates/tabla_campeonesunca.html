@@ -1,0 +1,82 @@
+{% include "headercpunca.html" %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tabla de Posiciones</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/cupingcss/stylecup.css' %}">
+     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
+</head>
+<body>
+
+     <!-- Breadcrumb section -->
+	<div class="site-breadcrumb">
+
+	</div>
+	<!-- Breadcrumb section end -->
+    <div class="container">
+    <ol class="breadcrumb" style="background-color: transparent;">
+
+    </ol>
+    </div>
+
+     	<!-- Team section  -->
+<section class="full-courses-section spad pt-0">
+    <div class="container">
+        <div class="section-title text-center">
+            <h2 class="h3-stylecup">Campeones</h2>
+            <img style="display: block; margin: 0 auto; max-width: 250px; height: auto;" src="{% static 'image/cpunca6.png' %}">
+        </div>
+        <div class="row">
+            {% for championunca in champions %}
+    <div class="col-md-6 col-lg-3">
+        <a href="{{ championunca.link }}" style="text-decoration: none;">
+            <div class="member">
+                <div class="member-pic set-bg" data-setbg="{% static 'image/' %}{{ championunca.foto }}">
+                </div>
+                <h5 style="padding-bottom: 20px; color: #0b0b0b; text-decoration: none;">{{ championunca.nombre }}</h5>
+            </div>
+        </a>
+    </div>
+{% endfor %}
+
+        </div>
+
+    </div>
+</section>
+
+
+
+<!-- Blog section -->
+	<section class="blog-section spad">
+		<div class="container">
+			<div class="section-title text-center">
+                <h4><i class="fa fa-newspaper-o"></i> FEUNCA Noticias</h4>
+				
+			</div>
+			<div class="row">
+                {% for post in posts %}
+				<div class="col-xl-6 col-md-6 col-sm-12">
+					<div class="blog-item" id="blogItem">
+						<div class="blog-thumb set-bg" data-setbg="{% static "image/" %}{{ post.foto }}"></div>
+						<div class="blog-content">
+                            <h4><a href="/noticias/{{ post.id }}" style="color:black">{{ post.title }}</a></h4>
+							<div class="blog-meta">
+								<span><i class="fa fa-calendar-o"></i> {{ post.published_date }} </span>
+								<span><i class="fa fa-user"></i> {{ post.author }} </span>
+							</div>
+							<p>{{ post.text|truncatewords:"25" }}</p>
+						</div>
+					</div>
+				</div>
+                {% endfor %}
+			</div>
+		</div>
+	</section>
+	<!-- Blog section -->
+{% include "pie_pagina.html" %}
+<script src="{% static "js/cupingjs/script.js" %}"></script>
+
+</body>
+</html>

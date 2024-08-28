@@ -1,0 +1,245 @@
+{% include "headercpunca.html" %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tabla de Posiciones</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/cupingcss/stylecup.css' %}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+
+    <style>
+       
+        .select2-container--default .select2-selection--single {
+            border-radius: 20px !important;
+            width: 100% !important;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+        }
+
+        .select2-container--default .select2-selection--single .select2-selection__rendered {
+            border-radius: 20px !important;
+        }
+        .select2-container--default .select2-search {
+            display: none !important;
+        }
+        .select2-container--default .select2-results__option--highlighted {
+            background-color: #009813 !important;
+            color: white !important;
+        }
+    </style>
+</head>
+<body>
+
+     <!-- Breadcrumb section -->
+	<div class="site-breadcrumb">
+
+	</div>
+	<!-- Breadcrumb section end -->
+    <div class="container">
+    <ol class="breadcrumb" style="background-color: transparent;">
+      <!--<li class="breadcrumb-item" ><a href="/" style="color: black"><i class="fa fa-home" style="color: black"></i> Inicio</a> </li>
+      <li class="breadcrumb-item active">Tabla de Posiciones</li>-->
+    </ol>
+    </div>
+
+
+    <section class="full-courses-section spad pt-0">
+    <div class="container">
+    <h4 class="h3-stylecup">Tabla de Posiciones Atletismo</h4>
+        <img style="display: block; margin: 0 auto; max-width: 250px; height: auto;"   src="{% static 'image/cpunca6.png' %}"><br><br>
+        <div style="text-align: center;">
+            <form id="deporteForm" method="get">
+                <!--<label for="deporte">Selecciona un deporte:</label>-->
+                <select  id="deporte" name="deporte" style="border-radius: 20px; padding: 15px; ">
+                    <option value="ATLETISMO" data-icon="fa-solid fa-running" data-url="#">Atletismo</option>
+                    <option value="100M" data-icon="fa-solid fa-running" data-url="/100m">100m</option>
+                    <option value="200M" data-icon="fa-solid fa-running" data-url="/200m">200m</option>
+                    <option value="4X100M" data-icon="fa-solid fa-running" data-url="/4x100">4x100m</option>
+                    <option value="DISCO" data-icon="fa-solid fa-record-vinyl" data-url="/disco">Disco</option>
+                    <option value="BALA" data-icon="fa-solid fa-circle" data-url="/bala">Bala</option>
+                    <option value="JABALINA" data-icon="fa-solid fa-arrow-up" data-url="/jabalina">Jabalina</option>
+                    <option value="SALTOLARGO" data-icon="fa-solid fa-angle-up" data-url="/saltolargo">Salto Largo</option>
+                    <option value="SALTOTRIPLE" data-icon="fa-solid fa-angle-double-up" data-url="/saltotriple">Salto Triple</option>
+                    <option value="TABLA" data-icon="fa-solid  fa-chart-bar" data-url="/tabla_atletismo">Tabla de Posiciones Atletismo</option>
+                    <option value="RESULTADOS" data-icon="fa-solid fa-sign-in-alt" data-url="/resultados_copa_unca">Todos los Deportes</option>
+                    <!-- Agrega las opciones para los demás deportes -->
+                </select>
+                <!--<button type="submit" style="border-radius: 8px; margin-top: 20px; background-color: #808080; color: white; padding: 8px; box-shadow: none; border: none;">Mostrar resultados</button>-->
+            </form>
+            
+        </div><br><br>
+        <h4 style="color: #009813" class="h3-stylecup"> Salto Largo Femenino</h4>
+
+
+<table id="tabla-posiciones" >
+    <thead>
+        <tr>
+            <th class="columnaabsolute">&nbsp;&nbsp;&nbsp;NOMBRE</th>
+            <th>EQUIPO</th>
+            <th>POSICION</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+            <tr>
+                <td>Karen Mendez</td>
+                <td class="columnaabsolute">
+                    <img src="{% static "image/FCSPYH.png" %}" alt="" class="equipo-img" style="display: inline">
+                    FCSPyH
+                </td>
+                <td class="h3-stylecup">&#129351;</td>
+            </tr>
+    <tr>
+                <td>Brenda Jara</td>
+                <td class="columnaabsolute">
+                    <img src="{% static "image/fcytuncacp.png" %}" alt="" class="equipo-img" style="display: inline">
+                    FCYT
+                </td>
+                <td class="h3-stylecup">&#129352;</td>
+            </tr>
+    <tr>
+                <td>Brenda Valdez</td>
+                <td class="columnaabsolute">
+                    <img src="{% static "image/FCP.png" %}" alt="" class="equipo-img" style="display: inline">
+                    FCP
+                </td>
+                <td class="h3-stylecup">&#129353;</td>
+            </tr>
+       
+    </tbody>
+</table><br><br>
+        <h4 style="color: #009813" class="h3-stylecup"> Salto Largo Masculino </h4>
+
+
+<table id="tabla-posiciones" >
+    <thead>
+        <tr>
+            <th class="columnaabsolute">&nbsp;&nbsp;&nbsp;NOMBRE</th>
+            <th>EQUIPO</th>
+            <th>POSICION</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+            <tr>
+                <td>Fausto Acuña</td>
+                <td class="columnaabsolute">
+                    <img src="{% static "image/FCSPYH.png" %}" alt="" class="equipo-img" style="display: inline">
+                    FCSPyH
+                </td>
+                <td class="h3-stylecup">&#129351;</td>
+            </tr>
+    <tr>
+                <td>Alcides Aranda</td>
+                <td class="columnaabsolute">
+                    <img src="{% static "image/fce.png" %}" alt="" class="equipo-img" style="display: inline">
+                    FCE
+                </td>
+                <td class="h3-stylecup">&#129352;</td>
+            </tr>
+    <tr>
+                <td>Jorge Dominguez</td>
+                <td class="columnaabsolute">
+                    <img src="{% static "image/fce.png" %}" alt="" class="equipo-img" style="display: inline">
+                    FCE
+                </td>
+                <td class="h3-stylecup">&#129353;</td>
+            </tr>
+       
+    </tbody>
+</table><br><br>
+    <h4 >Puntaje Atletismo</h4>
+        <img style=" max-width: 250px; "   src="{% static 'image/cpunca6.png' %}"><br><br>
+    <ul style="list-style-type: none;">
+        <li > <i class="fa fa-mars"></i> Masculino <i class="fa fa-venus"></i> Femenino<br> 
+            &#129351; 1er Puesto: 10pts<br>  &#129352; 2do Puesto: 7pts<br> &#129353; 3er Puesto: 5pts</li><br>
+
+    <li style="visibility: hidden;">&nbsp;</li>
+</ul>
+
+        </div>
+
+
+    </div>
+
+
+
+
+    </section>
+
+<!-- Blog section -->
+	<section class="blog-section spad">
+		<div class="container">
+			<div class="section-title text-center">
+                <h4><i class="fa fa-newspaper-o"></i> FEUNCA Noticias</h4>
+				
+			</div>
+			<div class="row">
+                {% for post in posts %}
+				<div class="col-xl-6 col-md-6 col-sm-12">
+					<div class="blog-item" id="blogItem">
+						<div class="blog-thumb set-bg" data-setbg="{% static "image/" %}{{ post.foto }}"></div>
+						<div class="blog-content">
+                            <h4><a href="/noticias/{{ post.id }}" style="color:black">{{ post.title }}</a></h4>
+							<div class="blog-meta">
+								<span><i class="fa fa-calendar-o"></i> {{ post.published_date }} </span>
+								<span><i class="fa fa-user"></i> {{ post.author }} </span>
+							</div>
+							<p>{{ post.text|truncatewords:"25" }}</p>
+						</div>
+					</div>
+				</div>
+                {% endfor %}
+			</div>
+		</div>
+	</section>
+	<!-- Blog section -->
+{% include "pie_pagina.html" %}
+<script src="{% static "js/cupingjs/script.js" %}"></script>
+     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+    <script>
+    $(document).ready(function() {
+        $('#deporte').select2({
+            templateResult: function(state) {
+                if (!state.id) {
+                    return state.text;
+                }
+                var iconClass = $(state.element).data('icon');
+                var $state = $(
+                    '<span><i class="' + iconClass + '"></i> ' + state.text + '</span>'
+                );
+                return $state;
+            },
+            templateSelection: function(state) {
+                if (!state.id) {
+                    return state.text;
+                }
+                var iconClass = $(state.element).data('icon');
+                var $state = $(
+                    '<span><i class="' + iconClass + '"></i> ' + state.text + '</span>'
+                );
+                return $state;
+            }
+        });
+    
+        $('#deporte').change(function() {
+            var selectedOption = $(this).find('option:selected');
+            var url = selectedOption.data('url');
+    
+            if (url) {
+                // Si hay una URL asociada, redirigir
+                window.location.href = url;
+            } else {
+                // De lo contrario, enviar el formulario
+                $('#deporteForm').submit();
+            }
+        });
+    });
+    </script>
+
+</body>
+</html>

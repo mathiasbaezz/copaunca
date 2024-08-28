@@ -1,0 +1,145 @@
+{% include "headercpunca.html" %}
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultados</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/cupingcss/stylecup.css' %}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+
+    <style>
+        /* Estilos para agregar espacio entre partidos */
+        .partido-container {
+            margin-bottom: 20px;
+        }
+
+        /* Estilos para resaltar los partidos */
+        .partido {
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .partido:hover {
+            background-color: #e5e5e5;
+        }
+
+        .hidden {
+          display: none;
+        }
+    </style>
+</head>
+<body>
+
+
+	<!-- Breadcrumb section -->
+	<div class="site-breadcrumb">
+		<div class="container">
+
+
+		</div>
+	</div>
+	<!-- Breadcrumb section end -->
+    <div class="container">
+    <ol class="breadcrumb" style="background-color: transparent;">
+      <li class="breadcrumb-item" ><a href="/" style="color: #009813"><i class="fa fa-home" style="color: #009813"></i> Inicio</a></li>
+      <li class="breadcrumb-item active">Noticias</li>
+    </ol>
+    </div>
+
+	<!-- Blog page section  -->
+	<section class="blog-page-section spad pt-0">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 post-list">
+                    {% for post in posts_pagin %}
+					<div class="post-item">
+						<div class="post-thumb set-bg" data-setbg="{% static "image/" %}{{ post.foto }}"></div>
+						<div class="post-content">
+							<h3><a href="/noticias/{{ post.id }}">{{ post.title }}</a></h3>
+							<div class="post-meta">
+								<span><i class="fa fa-calendar-o"></i>     {{ post.published_date }} </span>
+								<span><i class="fa fa-user"></i>  {{ post.author }}</span>
+							</div>
+							<p>{{ post.text|truncatewords:"100" }}</p>
+						</div>
+					</div>
+                    {% endfor %}
+
+
+					<ul class="site-pageination">
+                        {% if posts_pagin.has_previous %}
+                            <li><a href="?page=1" ><b style="padding: 5px;"> Inicio </b></a></li>
+                            <li><a href="?page={{ posts_pagin.previous_page_number }}"><i class="fa fa-chevron-left" style="display: inline"></i></a></li>
+                        {% endif %}
+                        <span class="current" style="padding-right: 15px">
+                            Pág. {{ posts_pagin.number }} de {{ posts_pagin.paginator.num_pages }}
+                        </span>
+                        {% if posts_pagin.has_next %}
+                            <li><a href="?page={{ posts_pagin.next_page_number }}"><i class="fa fa-chevron-right" style="display: inline"></i></a></li>
+                            <li><a href="?page={{ posts_pagin.paginator.num_pages }}"><b style="padding: 5px;"> Fin </b></a></li>
+                        {% endif %}
+
+					</ul>
+				</div>
+				<!-- sidebar -->
+				<div class="col-sm-8 col-md-5 col-lg-4 col-xl-3 offset-xl-1 offset-0 pl-xl-0 sidebar">
+					<!-- widget -->
+					<div class="widget">
+                    <a class="weatherwidget-io" href="https://forecast7.com/es/n25d36n56d46/coronel-oviedo/" data-label_1="CORONEL OVIEDO" data-label_2="CLIMA" data-icons="Climacons Animated" data-days="3" data-theme="pure" >CORONEL OVIEDO CLIMA</a>
+                    <script>
+                    !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');
+                    </script>
+					</div><br><br>
+                    
+
+                
+
+                    <!-- widget -->
+					<div class="widget">
+						<h5 class="widget-title">Noticias Recientes</h5>
+						<div class="recent-post-widget">
+							<!-- recent post -->
+							{% for post in posts %}
+                            <div class="rp-item">
+								<div class="rp-thumb set-bg" data-setbg="{% static "image/"%}{{ post.foto }}"></div>
+								<div class="rp-content">
+									<h6><a href="/noticias/{{ post.id }}" style="color:black">{{ post.title }}</a></h6>
+									<p><i class="fa fa-clock-o"></i>   {{ post.published_date }}</p>
+								</div>
+							</div>
+                            {% endfor %}
+							<!-- recent post -->
+						</div>
+					</div>
+					<!-- widget -->
+					<div class="widget">
+						<h4 class="widget-title">Etiquetas</h4>
+						<div class="tags">
+							<a href="/tag7"></a>
+                            <a href="/tag6"></a>
+                            <a href="/tag5"></a>
+                            <a href="/tag4"></a>
+                            <a href="/tag10"></a>
+                            <a href="/tag1"></a>
+                            <a href="/tag8"></a>
+                            <a href="/tag2"></a>
+                            <a href="/tag9"></a>
+                            <a href="/tag3"></a>
+                            <a href="/tag11"></a>
+                            <a href="/tag12"></a>
+						</div>
+					</div>
+
+
+					<div class="widget">
+						<img src="{% static "image/cpunca24.png" %}" alt="" >
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- Blog page section end -->
+
+{% include "pie_pagina.html" %}

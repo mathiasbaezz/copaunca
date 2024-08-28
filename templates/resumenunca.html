@@ -1,0 +1,226 @@
+{% include "headercpunca.html" %}
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Resultados</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/cupingcss/stylecup.css' %}">
+
+    <style>
+        /* Estilos para agregar espacio entre partidos */
+        .partido-container {
+            margin-bottom: 20px;
+        }
+
+        /* Estilos para resaltar los partidos */
+        .partido {
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .partido:hover {
+            background-color: #e5e5e5;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Breadcrumb section -->
+    <div class="site-breadcrumb">
+
+    </div>
+    <!-- Breadcrumb section end -->
+    <div class="container">
+    <ol class="breadcrumb" style="background-color: transparent;">
+      <!--<li class="breadcrumb-item" ><a href="/" style="color: black"><i class="fa fa-home" style="color: black"></i> Inicio</a></li>
+        <li class="breadcrumb-item "><a href="/partidos" style="color: black">Resultados</a></li>
+      <li class="breadcrumb-item active">Resumen</li>-->
+    </ol>
+    </div>
+
+    <!--Código Nuevo-->
+    <section class="full-courses-section spad pt-0">
+    <h5 class="h3-stylecup">Resumen del Partido</h5>
+         <div class="containerp">
+        <!-- code here -->
+        <div class="match">
+            <div class="match-header">
+
+                <div class="match-tournament">
+                        <img style="display: block; margin: 0 auto; max-width: 200px; height: auto;"  src="{% static 'image/cpunca6.png' %}" />
+                    </div>
+                <!--<div class="match-actions">
+                    <button class="btn-icon"><i class="material-icons-outlined">10</i></button>
+                    <button class="btn-icon"><i class="material-icons-outlined">/</i></button>
+                    <button class="btn-icon"><i class="material-icons-outlined">06</i></button>
+                    <button class="btn-icon"><i class="material-icons-outlined">/</i></button>
+                    <button class="btn-icon"><i class="material-icons-outlined">2023</i></button>
+                </div>-->
+            </div>
+
+
+            <div class="match-content">
+
+                <div class="column">
+                    <div class="team team--home">
+                        <div class="team-logo">
+                            {% if partidounca.equipo_local.imagen %}
+                                    <img src="{{ partidounca.equipo_local.imagen.url }}" alt="" class="img-stylecup equipo-img">
+                            {% endif %}
+                        </div>
+                        <h2 class="team-name">{{ partidounca.equipo_local.nombre }}</h2>
+
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="match-details">
+                        <div class="match-referee">
+                                <h7 class="h3-stylecup"><strong>{{ partidounca.get_deporte_display }}</strong></h7>
+                            </div>
+                        <div class="match-date">
+                            <strong>{{ partidounca.fecha }}</strong>
+                        </div>
+                        <div class="match-score">
+                            
+                            <span class="match-score-number ">{{ partidounca.goles_local }}</span>
+                            <span class="match-score-divider">:</span>
+                            <span class="match-score-number">{{ partidounca.goles_visitante }}</span>
+                        </div>
+                        <div class="match-referee">
+                            {{ partidounca.partido_numero }}: <strong>{{ partidounca.fase_partido }}</strong>
+                        </div>
+                        <!--<div class="match-bet-options">
+                            <button class="match-bet-option">1.48</button>
+                            <button class="match-bet-option">4.98</button>
+                            <button class="match-bet-option">8.24</button>
+                        </div>-->
+                        <!--<button class="match-bet-place">RESUMEN</button>-->
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="team team--away">
+                        <div class="team-logo">
+                            {% if partidounca.equipo_visitante.imagen %}
+                                    <img src="{{ partidounca.equipo_visitante.imagen.url }}" alt="" class="img-stylecup equipo-img">
+                            {% endif %}
+                        </div>
+                        <h2 class="team-name">{{ partidounca.equipo_visitante.nombre }}</h2>
+
+
+                    </div>
+                </div>
+            </div>
+
+             {% for eventopartidounca in partidounca.eventopartidounca_set.all %}
+            {% if eventopartidounca.tipo == 'INICIO DEL PARTIDO' %}
+                <div class="match-header" style="padding: 0px;"></div>
+                <div class="match-header">
+                    <div class="match-time-lapsed">
+                        <i class="fa fa-clock-o"></i><span> {{ eventopartidounca.tipo }}</span>
+                    </div>
+                    <div class="match-actions">
+                        <button class="btn-icon"><i class="material-icons-outlined">{{ eventopartidounca.minuto }}'</i></button>
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+
+            {% for eventosunca in partidounca.eventosunca_set.all %}
+                <div class="match-header" style="padding: 0px;"></div>
+                <div class="match-header">
+                    <div class="match-time-lapsed">
+                        {% if eventosunca.tipo == 'GOOOOL' or eventosunca.tipo == 'GOOOL' %}
+                            <i class="fa fa-soccer-ball-o"></i><span> {{ eventosunca.tipo }}</span>
+                        {% elif eventosunca.tipo == 'TARJETA ROJA' or eventosunca.tipo == 'TARJETA ROJA ' %}
+                            <i class="fas fa-square redcard-icon"></i><span> {{ eventosunca.tipo }}</span>
+                        {% elif eventosunca.tipo == 'TARJETA AMARILLA' or eventosunca.tipo == 'TARJETA AMARILLA ' %}
+                            <i class="fas fa-square yellowcard-icon"></i><span> {{ eventosunca.tipo }}</span>
+                        {% elif eventosunca.tipo == 'PUNTO' or eventosunca.tipo == 'PUNTO ' %}
+                            <i class="fa fa-hashtag"></i><span> {{ eventosunca.tipo }}</span>
+                        {% endif %}
+                    </div>
+
+                    <div class="match-actions">
+                        <button class="btn-icon"><i class="material-icons-outlined">{{ eventosunca.minuto }}'</i></button>
+                    </div>
+                </div>
+
+                <div class="match-content">
+                    <div class="column-resumen">
+                        <div class="match-referee-resumen">
+                            <strong>{{ eventosunca.jugadores }}</strong>
+                        </div>
+                        <div class="match-referee-resumen">
+                            {% if eventosunca.tipo == 'GOOOOL' or eventosunca.tipo == 'TARJETA ROJA' or eventosunca.tipo == 'TARJETA AMARILLA' or eventosunca.tipo == 'PUNTO' %}
+                                <span>&nbsp;&nbsp; {{ partidounca.equipo_local.nombre }} </span>
+                            {% elif eventosunca.tipo == 'GOOOL' or eventosunca.tipo == 'TARJETA ROJA ' or eventosunca.tipo == 'TARJETA AMARILLA ' or eventosunca.tipo == 'PUNTO ' %}
+                                <span>&nbsp;&nbsp; {{ partidounca.equipo_visitante.nombre }} </span>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="column-resumen">
+                        <div class="team team--away">
+                            <div>
+                                {% if eventosunca.tipo == 'GOOOOL' or evento.tipo == 'TARJETA ROJA' or eventosunca.tipo == 'TARJETA AMARILLA' or eventosunca.tipo == 'PUNTO' %}
+                                    {% if partidounca.equipo_local.imagen %}
+                                        <img src="{{ partidounca.equipo_local.imagen.url }}" alt="" class="equipo-img">
+                                    {% endif %}
+                                {% elif eventosunca.tipo == 'GOOOL' or evento.tipo == 'TARJETA ROJA ' or eventosunca.tipo == 'TARJETA AMARILLA ' or eventosunca.tipo == 'PUNTO ' %}
+                                    {% if partidounca.equipo_visitante.imagen %}
+                                        <img src="{{ partidounca.equipo_visitante.imagen.url }}" alt="" class="equipo-img">
+                                    {% endif %}
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+         {% for eventopartidounca in partidounca.eventopartidounca_set.all %}
+            {% if eventopartidounca.tipo == 'FINAL DEL PARTIDO' %}
+                <div class="match-header" style="padding: 0px;"></div>
+                <div class="match-header">
+                    <div class="match-time-lapsed">
+                        <i class="fa fa-clock-o"></i><span> {{ eventopartidounca.tipo }}</span>
+                    </div>
+                    <div class="match-actions">
+                        <button class="btn-icon"><i class="material-icons-outlined">{{ eventopartidounca.minuto }}'</i></button>
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+
+        </div>
+    </div>
+    </section>
+<!-- Blog section -->
+	<section class="blog-section spad">
+		<div class="container">
+			<div class="section-title text-center">
+                <h4><i class="fa fa-newspaper-o"></i> FEUNCA Noticias</h4>
+				
+			</div>
+			<div class="row">
+                {% for post in posts %}
+				<div class="col-xl-6 col-md-6 col-sm-12">
+					<div class="blog-item" id="blogItem">
+						<div class="blog-thumb set-bg" data-setbg="{% static "image/" %}{{ post.foto }}"></div>
+						<div class="blog-content">
+                            <h4><a href="/noticias/{{ post.id }}" style="color:black">{{ post.title }}</a></h4>
+							<div class="blog-meta">
+								<span><i class="fa fa-calendar-o"></i> {{ post.published_date }} </span>
+								<span><i class="fa fa-user"></i> {{ post.author }} </span>
+							</div>
+							<p>{{ post.text|truncatewords:"25" }}</p>
+						</div>
+					</div>
+				</div>
+                {% endfor %}
+			</div>
+		</div>
+	</section>
+	<!-- Blog section -->
+{% include "pie_pagina.html" %}
+    <script src="{% static 'js/cupingjs/script.js' %}"></script>
+</body>
+</html>
